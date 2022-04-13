@@ -1,0 +1,33 @@
+<canvas width="600" height="400"></canvas>
+
+<script>
+
+/*atividade 02.11 Esquadro #2
+No primeiro capitulo vimos como desenhar linhas para, por exemplo, criar um esquadro. Vimos que é preciso chamar a função beginPath e definir cada ponto do triângulo. Isso dá bastante trabalho e para quem não conhece tão bem a API até pode ser complicado!
+Repare que é muito mais fácil criar um retângulo, basta chamar fillRect. Que tal criar uma função desenhaTriangulo que recebe as coordenadas dos 3 pontos? Seria muito mais fácil, não?
+Nesse tipo de triângulo, basta saber os pontos A e C para descobrir o B! Repare que o X do A também é o X do B, e o Y do C também é o Y do B. Ficou confuso?
+Sabendo disso, podemos criar uma função mais simples ainda, que recebe as coordenadas do ponto A e C, além da cor, para desenhar um esquadro!
+*/
+
+var tela = document.querySelector('canvas');
+var pincel = tela.getContext('2d');
+
+//fundo
+pincel.fillStyle = 'grey';
+pincel.strokeRect(0, 0, 600, 400);
+
+function desenhaEsquadro(xa, ya, xc, yc, cor) {
+    xb = xa;
+    yb = yc;
+    pincel.fillStyle = cor;
+    pincel.beginPath();
+    pincel.moveTo(xa, ya);
+    pincel.lineTo(xb, yb);
+    pincel.lineTo(xc, yc);
+    pincel.fill();
+}
+
+desenhaEsquadro(50, 50, 400, 400, 'black')
+desenhaEsquadro(100, 175, 275, 350, 'white')
+
+</script>

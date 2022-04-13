@@ -1,0 +1,53 @@
+<canvas width="600" height="400"></canvas>
+<script>
+
+    var tela = document.querySelector('canvas');
+    var pincel = tela.getContext('2d');
+
+    function desenhaEsquadro(xa, ya, xc, yc, cor) {
+        pincel.fillStyle = cor
+        pincel.beginPath();
+        pincel.moveTo(xa, ya);
+        pincel.lineTo(xa, yc);
+        pincel.lineTo(xc, yc);
+        pincel.fill();
+
+        pincel.fillStyle = 'white'
+        pincel.beginPath();
+        pincel.moveTo((6*xa + xc)/7, (9*ya + 5*yc)/14);
+        pincel.lineTo((6*xa + xc)/7, (ya + 6*yc)/7);
+        pincel.lineTo((5*xa + 9*xc)/14, (ya + 6*yc)/7);
+        pincel.fill();
+        /*https://cursos.alura.com.br/forum/topico-qual-formula-geometrica-o-professor-usou-para-chegar-a-esse-resultado-ja-estou-um-bom-tempo-pensando-nisso-e-nao-cheguei-a-uma-conclusao-alguem-pode-me-ajudar-110604
+        Segue minha avaliação de como o professor deve ter chegado a esta formatação do código.
+        Vou escrever com letras MAIÚSCULAS para o triângulo preto e com letras minúsculas para o triângulo branco.
+        Vamos avaliar o eixo "x" do ponto "a". Para os demais, o raciocício é o mesmo.
+        Xa = 50
+        Xc = 400
+        No exemplo dado, temos o triângulo branco posicionado em xa = 100
+        A Largura do triângulo preto será:
+        L = Xc - Xa
+        L = 350
+        E o ponto "a" do triângulo banco está a uma distância horizontal de xa - Xa = 50
+        Ou seja, está a 1/7 de distância em relação à largura do triângulo preto.
+        d = (xa - Xa)/(Xc - Xa)
+        d = 50 / 350
+        d = 1/7
+        Dessa forma, podemos calcular a posição de xa a partir de Xa e Xc. Ficaria assim:
+        d = (xa - Xa) / (Xc - Xa)
+        (xa - Xa) = (Xc - Xa)*d
+        xa = Xa + (Xc - Xa)*d
+        xa = Xa + (Xc - Xa) * (1/ 7)
+        xa = Xa + (Xc - Xa) / 7
+        Fatorando:
+        xa = (7*Xa + Xc - Xa)/7
+        Que finalmente resulta em:
+        xa = (6*Xa + Xc)/7
+        */
+
+}
+
+    desenhaEsquadro(50, 50, 400, 400, 'black');
+    
+
+</script>
